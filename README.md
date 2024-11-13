@@ -1,4 +1,4 @@
-This is a NodeJS-compatible version of the simple example for a bot made with
+This is a NodeJS-compatible version of the simple example bot made with
 [Discord-http](https://jsr.io/@inbestigator/discord-http).
 
 ## Getting Started

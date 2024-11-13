@@ -5,7 +5,8 @@ import {
   type CommandInteraction,
 } from "@inbestigator/discord-http";
 import entities from "./entities.json" with { type: "json" };
-const kv = await Deno.openKv();
+
+export const triviaData: Record<string, object> = {};
 
 function decodeHTMLEntities(text: string): string {
   return text.replace(/&(#\d+|#x[0-9a-fA-F]+|\w+);/g, (match, code) => {
@@ -21,7 +22,7 @@ function decodeHTMLEntities(text: string): string {
 }
 
 export const config: CommandConfig = {
-  description: "Gives a randomtrivia question",
+  description: "Gives a random trivia question",
 };
 
 export default async function counter(interaction: CommandInteraction) {
@@ -54,7 +55,7 @@ export default async function counter(interaction: CommandInteraction) {
     return;
   }
 
-  await kv.atomic().set(["trivia", userId], data.results[0]).commit();
+  triviaData[userId] = data.results[0];
 
   const answers = data.results[0].incorrect_answers.concat(
     data.results[0].correct_answer,

@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "pnpm build && pnpm start",
+    "build": "pnpm tsx ./build.ts",
+    "start": "pnpm tsx ./bot.gen.ts"
+  },
+  "dependencies": {
+    "@inbestigator/discord-http": "npm:@jsr/inbestigator__discord-http@0.3.0",
+    "express": "^4.21.1",
+    "tsx": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
+}

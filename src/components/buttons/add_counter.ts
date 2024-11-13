@@ -1,13 +1,10 @@
 import { MessageComponentInteraction } from "@inbestigator/discord-http";
-import { showCount } from "../../commands/counter.ts";
-const kv = await Deno.openKv();
+import { count, setCount, showCount } from "../../commands/counter.ts";
 
 export default async function resetCounter(
   interaction: MessageComponentInteraction,
 ) {
-  await kv.atomic().sum(["counter"], 1n).commit();
+  setCount(count + 1);
 
-  const count = await kv.get(["counter"]);
-
-  await interaction.update(showCount(count.value));
+  await interaction.update(showCount(count));
 }

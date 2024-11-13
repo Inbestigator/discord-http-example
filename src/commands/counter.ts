@@ -4,19 +4,22 @@ import {
   type CommandConfig,
   type CommandInteraction,
 } from "@inbestigator/discord-http";
-const kv = await Deno.openKv();
+
+export let count = 0;
+
+export function setCount(newCount: number) {
+  count = newCount;
+}
 
 export const config: CommandConfig = {
   description: "Increments a counter",
 };
 
 export default async function counter(interaction: CommandInteraction) {
-  await kv.atomic().sum(["counter"], 1n).commit();
-
-  const count = await kv.get(["counter"]);
+  count++;
 
   await interaction.reply({
-    content: showCount(count.value),
+    content: showCount(count),
     ephemeral: true,
     components: [
       ActionRow(

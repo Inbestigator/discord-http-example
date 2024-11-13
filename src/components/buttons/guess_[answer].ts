@@ -2,7 +2,7 @@ import {
   ActionRow,
   MessageComponentInteraction,
 } from "@inbestigator/discord-http";
-const kv = await Deno.openKv();
+import { triviaData } from "../../commands/trivia";
 
 export default async function resetCounter(
   interaction: MessageComponentInteraction,
@@ -21,7 +21,7 @@ export default async function resetCounter(
     return;
   }
 
-  const question = (await kv.get(["trivia", userId])).value;
+  const question = triviaData[userId];
 
   const updatedButtons = interaction.message.components![0].components.map(
     (button) => ({

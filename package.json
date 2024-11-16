@@ -5,7 +5,7 @@
     "start": "pnpm tsx ./bot.gen.ts"
   },
   "dependencies": {
-    "@inbestigator/discord-http": "npm:@jsr/inbestigator__discord-http@0.3.0",
+    "@inbestigator/discord-http": "npm:@jsr/inbestigator__discord-http@0.3.4",
     "express": "^4.21.1",
     "tsx": "^4.19.2"
   },

@@ -26,19 +26,6 @@ export const config: CommandConfig = {
 };
 
 export default async function counter(interaction: CommandInteraction) {
-  let userId;
-
-  if ("member" in interaction && interaction.member) {
-    userId = interaction.member.user.id;
-  } else if ("user" in interaction && interaction.user) {
-    userId = interaction.user.id;
-  }
-
-  if (!userId) {
-    await interaction.reply("I'm not sure who you are.");
-    return;
-  }
-
   await interaction.deferReply({
     ephemeral: true,
   });
@@ -55,7 +42,7 @@ export default async function counter(interaction: CommandInteraction) {
     return;
   }
 
-  triviaData[userId] = data.results[0];
+  triviaData[interaction.user.id] = data.results[0];
 
   const answers = data.results[0].incorrect_answers.concat(
     data.results[0].correct_answer,

@@ -8,20 +8,7 @@ export default async function resetCounter(
   interaction: MessageComponentInteraction,
   { answer }: { answer: string },
 ) {
-  let userId;
-
-  if ("member" in interaction && interaction.member) {
-    userId = interaction.member.user.id;
-  } else if ("user" in interaction && interaction.user) {
-    userId = interaction.user.id;
-  }
-
-  if (!userId) {
-    await interaction.reply("I'm not sure who you are.");
-    return;
-  }
-
-  const question = triviaData[userId];
+  const question = triviaData[interaction.user.id];
 
   const updatedButtons = interaction.message.components![0].components.map(
     (button) => ({

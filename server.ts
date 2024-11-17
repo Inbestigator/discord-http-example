@@ -1,4 +1,5 @@
 import {
+  BotConfig,
   CommandInteraction,
   MessageComponentInteraction,
   ModalSubmitInteraction,
@@ -12,12 +13,13 @@ export function createServer(
   runComponent: (
     interaction: MessageComponentInteraction | ModalSubmitInteraction,
   ) => Promise<void>,
+  config: BotConfig,
 ) {
   const app = express();
   app.use(express.json());
   const port = 8000;
 
-  app.post("/", async (req, res) => {
+  app.post(config.endpoint ?? "/", async (req, res) => {
     const sigReq = {
       headers: {
         get: (name: string) => {

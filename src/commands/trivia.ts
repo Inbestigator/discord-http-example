@@ -25,7 +25,7 @@ export const config: CommandConfig = {
   description: "Gives a random trivia question",
 };
 
-export default async function counter(interaction: CommandInteraction) {
+export default async function trivia(interaction: CommandInteraction) {
   await interaction.deferReply({
     ephemeral: true,
   });

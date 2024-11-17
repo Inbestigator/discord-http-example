@@ -4,7 +4,7 @@ import {
 } from "@inbestigator/discord-http";
 import { triviaData } from "../../commands/trivia";
 
-export default async function resetCounter(
+export default async function guess(
   interaction: MessageComponentInteraction,
   { answer }: { answer: string },
 ) {

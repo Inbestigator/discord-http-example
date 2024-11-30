@@ -1,5 +1,8 @@
-This is a NodeJS-compatible version of the simple example bot made with
-[Discord-http](https://jsr.io/@inbestigator/discord-http).
+This is a version of the simple example bot made with
+[Discord-http](https://jsr.io/@inbestigator/discord-http) that is compatible
+with Node, Bun, and Deno (recommended to use
+[the main example](https://github.com/inbestigator/discord-http-example) with
+Deno).
 
 ## Getting Started
 

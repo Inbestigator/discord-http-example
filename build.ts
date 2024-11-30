@@ -1,5 +1,5 @@
 import { build } from "@inbestigator/discord-http";
-import { writeFileSync } from "fs";
+import { writeFileSync } from "node:fs";
 
 async function genBot() {
   const outputContent = await build(true, false);
